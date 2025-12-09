@@ -13,350 +13,154 @@
       color: #111827;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
+      overflow-x: hidden;
     }
 
-    .wrap {
-      width: 100%;
-      max-width: 720px;
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       text-align: center;
     }
 
-    .logo-btn {
-      border: none;
-      background: none;
-      padding: 0;
+    .logo {
+      width: 300px;
+      max-width: 80vw;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .logo-btn img {
-      height: 120px;
-      width: auto;
-      display: block;
-    }
-
-    .tagline {
-      font-size: 0.8rem;
+    .title {
+      font-size: 2.2rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-
-    .headline {
-      font-size: 1.6rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .subline {
-      font-size: 0.9rem;
-      color: #4b5563;
-      margin-bottom: 18px;
-    }
-
-    .hint {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      margin-bottom: 16px;
-    }
-
-    .links-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      font-size: 0.78rem;
-      color: #6b7280;
-      margin-bottom: 8px;
-    }
-
-    .link {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    .footer-line {
-      font-size: 0.76rem;
-      color: #9ca3af;
       margin-top: 10px;
+      cursor: pointer;
     }
 
-    .footer-socials a {
-      text-decoration: underline;
-      margin: 0 4px;
+    .subtitle {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #6b7280;
     }
 
-    /* SIGNUP OVERLAY */
-    .overlay {
+    /* EMAIL POPUP */
+    .popup {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.55);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 40;
-      padding: 16px;
+      z-index: 50;
     }
 
-    .overlay.open {
-      display: flex;
+    .popup-content {
+      background: #fff;
+      padding: 22px;
+      border-radius: 14px;
+      width: 90%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
-    .panel {
-      width: 100%;
-      max-width: 480px;
-      background: #ffffff;
-      border-radius: 22px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 22px 60px rgba(0,0,0,0.3);
-      padding: 18px 18px 16px;
-      text-align: left;
-    }
-
-    .panel-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .popup-content h2 {
       margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      font-size: 1.3rem;
     }
 
-    .panel-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #6b7280;
+    .popup-content input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-top: 10px;
     }
 
-    .panel-close {
+    .popup-content button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      border-radius: 8px;
       border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: #9ca3af;
-    }
-
-    .panel-main {
-      font-size: 0.85rem;
-      color: #4b5563;
-      margin-bottom: 12px;
-    }
-
-    .panel-main strong {
-      color: #111827;
-    }
-
-    .label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-
-    .input-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .email-input {
-      flex: 1 1 180px;
-      max-width: 260px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      padding: 8px 12px;
-      font-size: 0.85rem;
-      outline: none;
-      background: #f9fafb;
-    }
-
-    .email-input:focus {
-      border-color: #111827;
-      background: #ffffff;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: 1px solid #111827;
       background: #111827;
-      color: #ffffff;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+      color: #fff;
       cursor: pointer;
-      white-space: nowrap;
+      width: 100%;
     }
 
-    .note {
-      font-size: 0.78rem;
-      color: #9ca3af;
-    }
-
-    @media (max-width: 480px) {
-      .logo-btn img {
-        height: 96px;
-      }
-      .headline {
-        font-size: 1.3rem;
-      }
-      .panel {
-        padding: 16px 14px 14px;
-      }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      width: 100%;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <button class="logo-btn" id="logoButton" type="button">
-      <img src="zon-logo.png" alt="ZON Logo" />
-    </button>
 
-    <div class="tagline">MotionTherapy · ZON</div>
-    <div class="headline">Drop 001 · Gallery</div>
-    <div class="subline" id="sublineText">
-      Tap the ZON logo to unlock the gallery and save your email for early motion.
-    </div>
-    <div class="hint" id="hintText">
-      First time here? You’ll enter your email once. After that, ZON remembers you.
-    </div>
+  <div class="container">
+    <img src="zon-logo.png" class="logo" id="enterLogo" alt="ZON Logo">
 
-    <div class="links-row">
-      <a href="shop.html" class="link" id="fallbackLink">ZON SHOP</a>
-      <span>·</span>
-      <a href="coming-soon.html" class="link">Drop 002 · Coming Soon</a>
-    </div>
+    <div class="title" id="enterText">ZON SHOP</div>
+    <div class="subtitle">Drop 001 · Hoodies & Tees</div>
+  </div>
 
-    <div class="footer-line">
-      © 2025 ZON · MotionTherapy.
-      Instagram:
-      <span class="footer-socials">
-        <a href="https://instagram.com/zontherapy" target="_blank">@zontherapy</a>
-        · TikTok:
-        <a href="https://tiktok.com/@zontherapy" target="_blank">@zontherapy</a>
-        · Email:
-        <a href="mailto:dwaynezonmerch@gmail.com">dwaynezonmerch@gmail.com</a>
-      </span>
-    </div>
-  </main>
+  <!-- EMAIL POPUP -->
+  <div class="popup" id="emailPopup">
+    <div class="popup-content">
+      <h2>Enter for Access</h2>
+      <p style="font-size:0.9rem; color:#555;">Get access to ZON SHOP</p>
 
-  <!-- SIGNUP OVERLAY -->
-  <div class="overlay" id="signupOverlay">
-    <div class="panel">
-      <div class="panel-top">
-        <div class="panel-title">Lock in · ZON access</div>
-        <button class="panel-close" id="signupClose" type="button">×</button>
-      </div>
-      <div class="panel-main">
-        <strong>Before you enter the gallery, lock in your email.</strong><br />
-        This is for early drops, motion logs, and behind-the-scenes. No spam — just progress.
-      </div>
-      <div class="label">Email</div>
-      <div class="input-row">
-        <input
-          type="email"
-          id="signupEmail"
-          class="email-input"
-          placeholder="you@email.com"
-        />
-        <button class="btn" id="signupSubmit" type="button">Enter ZON</button>
-      </div>
-      <div class="note" id="signupNote">
-        Your email stays with ZON. On this device, we’ll remember you so next time you tap the logo, you go straight in.
-      </div>
+      <input type="email" id="emailInput" placeholder="your@email.com" />
+
+      <button onclick="submitEmail()">Enter</button>
     </div>
   </div>
 
+  <footer>© 2025 ZON · MotionTherapy</footer>
+
   <script>
-    const logoButton = document.getElementById("logoButton");
-    const signupOverlay = document.getElementById("signupOverlay");
-    const signupClose = document.getElementById("signupClose");
-    const signupEmail = document.getElementById("signupEmail");
-    const signupSubmit = document.getElementById("signupSubmit");
-    const signupNote = document.getElementById("signupNote");
-    const sublineText = document.getElementById("sublineText");
-    const hintText = document.getElementById("hintText");
+    const emailPopup = document.getElementById("emailPopup");
+    const enterLogo = document.getElementById("enterLogo");
+    const enterText = document.getElementById("enterText");
 
-    const EMAIL_KEY = "zonEmail";
-
-    function hasEmail() {
-      try {
-        const stored = localStorage.getItem(EMAIL_KEY);
-        return !!stored;
-      } catch (e) {
-        return false;
-      }
+    // If email already saved → skip popup
+    if (localStorage.getItem("zonEmail")) {
+      enterLogo.onclick = () => window.location.href = "shop.html";
+      enterText.onclick = () => window.location.href = "shop.html";
+    } else {
+      // Show popup when they click logo or ZON SHOP
+      enterLogo.onclick = () => emailPopup.style.display = "flex";
+      enterText.onclick = () => emailPopup.style.display = "flex";
     }
 
-    function openOverlay() {
-      signupOverlay.classList.add("open");
-      signupEmail.focus();
-    }
+    function submitEmail() {
+      const val = document.getElementById("emailInput").value.trim();
 
-    function closeOverlay() {
-      signupOverlay.classList.remove("open");
-    }
-
-    function handleLogoClick() {
-      if (hasEmail()) {
-        // Already locked in → go straight to shop
-        window.location.href = "shop.html";
-      } else {
-        // First time → show email gate
-        openOverlay();
-      }
-    }
-
-    function saveEmailAndEnter() {
-      const value = signupEmail.value.trim();
-      if (!value || !value.includes("@")) {
-        signupNote.textContent = "Add a real email so ZON can tap in with updates.";
-        signupNote.style.color = "#b91c1c";
+      if (val.length < 5 || !val.includes("@")) {
+        alert("Enter a valid email.");
         return;
       }
-      try {
-        localStorage.setItem(EMAIL_KEY, value);
-      } catch (e) {
-        // ignore storage errors, still let them in
-      }
-      signupNote.style.color = "#9ca3af";
+
+      // Save email so next visit skips popup
+      localStorage.setItem("zonEmail", val);
+
+      // Go to shop
       window.location.href = "shop.html";
     }
-
-    // Init UI copy based on whether email already stored
-    (function initLanding() {
-      if (hasEmail()) {
-        sublineText.textContent =
-          "You’re already locked in. Tap the ZON logo to enter the shop.";
-        hintText.textContent =
-          "Email recognized on this device. You can still change it in the future when real auth is live.";
-      }
-    })();
-
-    // Events
-    logoButton.addEventListener("click", handleLogoClick);
-    signupClose.addEventListener("click", closeOverlay);
-    signupSubmit.addEventListener("click", saveEmailAndEnter);
-
-    signupEmail.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        saveEmailAndEnter();
-      }
-    });
-
-    signupOverlay.addEventListener("click", (e) => {
-      if (e.target === signupOverlay) closeOverlay();
-    });
   </script>
+
 </body>
 </html>
