@@ -47,6 +47,7 @@
       margin-top: 8px;
       font-size: 0.95rem;
       color: #6b7280;
+      display: none; /* no Drop 001 text */
     }
 
     /* EMAIL POPUP */
@@ -114,6 +115,7 @@
     <img src="zon-logo.png" class="logo" id="enterLogo" alt="ZON Logo">
 
     <div class="title" id="enterText">ZON SHOP</div>
+    <!-- subtitle removed visually -->
     <div class="subtitle">Drop 001 · Hoodies & Tees</div>
   </div>
 
@@ -154,10 +156,7 @@
         return;
       }
 
-      // Save email so next visit skips popup
       localStorage.setItem("zonEmail", val);
-
-      // Go to shop
       window.location.href = "shop.html";
     }
   </script>
