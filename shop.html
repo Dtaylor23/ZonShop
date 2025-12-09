@@ -75,9 +75,9 @@
       color: #111827;
     }
 
+    /* drop-sub removed visually */
     .drop-sub {
-      font-size: 0.78rem;
-      color: #6b7280;
+      display: none;
     }
 
     .header-right {
@@ -145,46 +145,20 @@
       letter-spacing: 0.22em;
     }
 
+    /* subline hidden */
     .shop-hero-sub {
-      margin-top: 4px;
-      font-size: 0.86rem;
-      color: #6b7280;
+      display: none;
     }
 
-    /* SEARCH + TOOLS */
+    /* TOOLBAR – ONLY SORT + SAVED */
     .toolbar {
       margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       font-size: 0.8rem;
-    }
-
-    .search-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex: 1 1 220px;
-      max-width: 360px;
-      border-radius: 12px;             /* was 999px – now a clean rectangle */
-      border: 1px solid #e5e7eb;
-      padding: 6px 10px;
-      background: #f3f4f6;
-    }
-
-    .search-wrap span {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    .search-input {
-      border: none;
-      outline: none;
-      font-size: 0.8rem;
-      background: transparent;
-      width: 100%;
     }
 
     .tools-right {
@@ -723,18 +697,7 @@
     /* MOBILE TWEAKS */
     @media (max-width: 640px) {
       .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-wrap {
-        max-width: 100%;
-        border-radius: 10px;
-        padding: 8px 10px;
-      }
-
-      .tools-right {
-        justify-content: space-between;
+        justify-content: flex-start;
       }
 
       .shop-hero-title {
@@ -786,17 +749,8 @@
       <div class="shop-hero-sub">Drop 001 · Hoodies & Tees</div>
     </section>
 
-    <!-- TOOLBAR -->
+    <!-- TOOLBAR (no search) -->
     <section class="toolbar">
-      <div class="search-wrap">
-        <span>🔍</span>
-        <input
-          id="searchInput"
-          class="search-input"
-          type="text"
-          placeholder="Search motion, hoodies, tees..."
-        />
-      </div>
       <div class="tools-right">
         <select id="sortSelect" class="sort-select">
           <option value="featured">Sort: Featured</option>
@@ -810,6 +764,7 @@
         </button>
       </div>
     </section>
+
     <div class="saved-hint">
       Tap ♥ on any piece to build your own wall. Turn on “Saved in Motion” to view only your picks.
     </div>
@@ -869,9 +824,7 @@
         <button class="detail-close" id="cartClose" type="button">×</button>
         <div>
           <div class="cart-title">Cart preview</div>
-          <div class="cart-list" id="cartList">
-            <!-- items injected -->
-          </div>
+          <div class="cart-list" id="cartList"></div>
           <div class="cart-total" id="cartTotal">
             <span>Total</span>
             <span>$0.00</span>
@@ -1078,7 +1031,6 @@
 
     const productGrid = document.getElementById("productGrid");
     const navPills = document.querySelectorAll(".nav-pill");
-    const searchInput = document.getElementById("searchInput");
     const sortSelect = document.getElementById("sortSelect");
     const savedToggle = document.getElementById("savedToggle");
     const cartPill = document.getElementById("cartPill");
@@ -1106,7 +1058,6 @@
     const sizeClose = document.getElementById("sizeClose");
 
     let currentFilter = "all";
-    let currentSearch = "";
     let currentSort = "featured";
     let savedOnly = false;
     let cartCount = 0;
@@ -1255,11 +1206,6 @@
         fullList = fullList.filter((p) => p.type === currentFilter);
       }
 
-      if (currentSearch.trim()) {
-        const q = currentSearch.trim().toLowerCase();
-        fullList = fullList.filter((p) => p.name.toLowerCase().includes(q));
-      }
-
       if (savedOnly) {
         fullList = fullList.filter((p) => savedSet.has(p.id));
       }
@@ -1280,7 +1226,7 @@
             ${
               savedOnly
                 ? "Nothing saved yet. First favorite = first version of you."
-                : "No pieces match this search yet. Try clearing filters."
+                : "No pieces match this filter yet. Try switching categories."
             }
           </div>
         `;
@@ -1396,11 +1342,6 @@
       });
     });
 
-    searchInput.addEventListener("input", () => {
-      currentSearch = searchInput.value;
-      renderProducts();
-    });
-
     sortSelect.addEventListener("change", () => {
       currentSort = sortSelect.value;
       renderProducts();
@@ -1418,10 +1359,10 @@
       detailName.textContent = product.name;
       detailType.textContent =
         product.type === "hoodie"
-          ? "Hoodie · Drop 001"
-          : "Tee · Drop 001";
+          ? "Hoodie · ZON"
+          : "Tee · ZON";
       detailPrice.textContent = `$${product.price.toFixed(2)}`;
-      detailTag.textContent = product.tag || "Drop 001";
+      detailTag.textContent = product.tag || "Drop";
 
       detailMirror.textContent = mirrorLine(product);
 
